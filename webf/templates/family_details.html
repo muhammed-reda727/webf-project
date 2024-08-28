@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Family Details</h1>
+    <div class="flash">{{ get_flashed_messages()[0] if get_flashed_messages() else '' }}</div>
+    <form action="/family_details" method="post">
+        <input type="submit" name="action" value="add" />
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Husband Name</th>
+                <th>Wife Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for family in family_details %}
+            <tr>
+                <td>{{ family[0] }}</td>
+                <td>{{ family[1] }}</td>
+                <td>{{ family[2] }}</td>
+                <td>
+                    <form action="/edit_family_details/{{ family[0] }}" method="get" style="display:inline;">
+                        <input type="submit" value="Edit" />
+                    </form>
+                    <form action="/family_details" method="post" style="display:inline;">
+                        <input type="hidden" name="family_id" value="{{ family[0] }}" />
+                        <input type="submit" name="action" value="delete" />
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

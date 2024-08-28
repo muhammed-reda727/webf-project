@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorer Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <h2>Enter Explorer Details</h2>
+    <form method="POST">
+        <label for="explorer_name">اسم المسكشف:</label>
+        <input type="text" id="explorer_name" name="explorer_name" required><br><br>
+        <label for="date">التاريخ:</label>
+        <input type="date" id="date" name="date" required><br><br>
+        <label for="village">القرية:</label>
+        <input type="text" id="village" name="village" required><br><br>
+        <label for="center">المركز:</label>
+        <input type="text" id="center" name="center" required><br><br>
+        <label for="governorate">المحافظة:</label>
+        <input type="text" id="governorate" name="governorate" required><br><br>
+        <label for="guide">الدليل:</label>
+        <input type="text" id="guide" name="guide" required><br><br>
+        <label for="guide_phone">رقم تليفون الدليل:</label>
+        <input type="text" id="guide_phone" name="guide_phone" required><br><br>
+        <label for="guide_id">رقم بطاقة الدليل:</label>
+        <input type="text" id="guide_id" name="guide_id" required><br><br>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

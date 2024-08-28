@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Family Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Edit Family Details</h1>
+    <form action="/edit_family_details/{{ family_detail[0] }}" method="post" enctype="multipart/form-data">
+        <label>Husband Name:</label><input type="text" name="husband_name" value="{{ family_detail[1] }}" required /><br />
+        <label>Wife Name:</label><input type="text" name="wife_name" value="{{ family_detail[2] }}" required /><br />
+        <label>Husband National ID:</label><input type="text" name="husband_national_id" value="{{ family_detail[3] }}" maxlength="14" required /><br />
+        <label>Wife National ID:</label><input type="text" name="wife_national_id" value="{{ family_detail[4] }}" maxlength="14" required /><br />
+        <label>Phone:</label><input type="text" name="phone" value="{{ family_detail[5] }}" maxlength="11" required /><br />
+        <label>Address:</label><input type="text" name="address" value="{{ family_detail[6] }}" required /><br />
+        <label>Family Members Count:</label><input type="number" name="family_members_count" value="{{ family_detail[7] }}" required /><br />
+        <label>Children Details:</label><textarea name="children_details" required>{{ family_detail[8] }}</textarea><br />
+        <label>Family Income:</label><input type="number" name="family_income" step="0.01" value="{{ family_detail[9] }}" required /><br />
+        <label>Husband Job:</label><input type="text" name="husband_job" value="{{ family_detail[10] }}" required /><br />
+        <label>Family Health Status:</label><textarea name="family_health_status" required>{{ family_detail[11] }}</textarea><br />
+        <label>House Condition:</label><textarea name="house_condition" required>{{ family_detail[12] }}</textarea><br />
+        <label>Roof Area:</label><input type="number" name="roof_area" step="0.01" value="{{ family_detail[13] }}" required /><br />
+        <label>Distance to Main Water Pipe:</label><input type="number" name="distance_to_main_water_pipe" step="0.01" value="{{ family_detail[14] }}" required /><br />
+        <label>Blankets Count:</label><input type="number" name="blankets_count" value="{{ family_detail[15] }}" required /><br />
+        <label>Charity Assistance:</label><input type="text" name="charity_assistance" value="{{ family_detail[16] }}" required /><br />
+        <label>Furniture Condition:</label><textarea name="furniture_condition" required>{{ family_detail[17] }}</textarea><br />
+        <label>Clothing Condition:</label><textarea name="clothing_condition" required>{{ family_detail[18] }}</textarea><br />
+        <label>Explorer Opinion:</label><textarea name="explorer_opinion" required>{{ family_detail[19] }}</textarea><br />
+        <label>Acceptance Status:</label>
+        <select name="acceptance_status" required>
+            <option value="accepted" {% if family_detail[20] == 'accepted' %}selected{% endif %}>Accepted</option>
+            <option value="rejected" {% if family_detail[20] == 'rejected' %}selected{% endif %}>Rejected</option>
+        </select><br />
+        <label>Family Head ID Image:</label><input type="file" name="family_head_id_image" /><br />
+        <input type="hidden" name="action" value="edit" />
+        <input type="submit" value="Save Changes" />
+    </form>
+</body>
+</html>
